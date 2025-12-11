@@ -40,7 +40,23 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Contact Form Handling
+// EmailJS Configuration
+// TODO: Replace these with your actual EmailJS credentials
+const EMAILJS_CONFIG = {
+    PUBLIC_KEY: 'kJ3glqFmsLWc65O4m',
+    SERVICE_ID: 'service_9ai692h',
+    TEMPLATE_ID: 'template_sinq4jx'
+};
+
+// Initialize EmailJS
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize EmailJS with your public key
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+    }
+});
+
+// Contact Form Handling with EmailJS
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     
@@ -48,20 +64,56 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form data
-            const formData = new FormData(contactForm);
-            const data = {};
-            
-            for (let [key, value] of formData.entries()) {
-                data[key] = value;
+            // Validate form first
+            if (!validateForm(contactForm)) {
+                return;
             }
             
-            // Here you would typically send the data to your backend
-            // For now, we'll just show a success message
-            showFormSuccess();
+            // Show loading state
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
             
-            // Reset form
-            contactForm.reset();
+            // Get form data
+            const formData = new FormData(contactForm);
+            const templateParams = {};
+            
+            for (let [key, value] of formData.entries()) {
+                templateParams[key] = value;
+            }
+            
+            // Add additional parameters that might be useful
+            templateParams.to_email = 'jacobrook10@gmail.com'; // Your email
+            templateParams.reply_to = templateParams.email;
+            templateParams.timestamp = new Date().toLocaleString();
+            
+            // Send email using EmailJS
+            if (typeof emailjs !== 'undefined') {
+                emailjs.send(
+                    EMAILJS_CONFIG.SERVICE_ID,
+                    EMAILJS_CONFIG.TEMPLATE_ID,
+                    templateParams
+                )
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    showFormSuccess();
+                    contactForm.reset();
+                })
+                .catch(function(error) {
+                    console.log('FAILED...', error);
+                    showFormError('Failed to send message. Please try again or contact us directly.');
+                })
+                .finally(function() {
+                    // Reset button state
+                    submitButton.textContent = originalButtonText;
+                    submitButton.disabled = false;
+                });
+            } else {
+                showFormError('Email service not available. Please contact us directly.');
+                submitButton.textContent = originalButtonText;
+                submitButton.disabled = false;
+            }
         });
     }
 });
@@ -71,7 +123,7 @@ function showFormSuccess() {
     const successMessage = document.createElement('div');
     successMessage.innerHTML = `
         <div style="
-            background-color: #dc2626;
+            background-color: #1E90FF;
             color: white;
             padding: 1rem 2rem;
             border-radius: 5px;
@@ -88,11 +140,40 @@ function showFormSuccess() {
     
     // Remove message after 5 seconds
     setTimeout(() => {
-        const message = form.parentNode.querySelector('[style*="background-color: #dc2626"]');
+        const message = form.parentNode.querySelector('[style*="background-color: #1E90FF"]');
         if (message) {
             message.remove();
         }
     }, 5000);
+}
+
+function showFormError(errorMessage) {
+    // Create error message
+    const errorDiv = document.createElement('div');
+    errorDiv.innerHTML = `
+        <div style="
+            background-color: #dc2626;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            margin-bottom: 2rem;
+            text-align: center;
+            animation: slideDown 0.3s ease-out;
+        ">
+            <strong>Error:</strong> ${errorMessage}
+        </div>
+    `;
+    
+    const form = document.getElementById('contactForm');
+    form.parentNode.insertBefore(errorDiv.firstElementChild, form);
+    
+    // Remove message after 7 seconds
+    setTimeout(() => {
+        const message = form.parentNode.querySelector('[style*="background-color: #dc2626"]');
+        if (message) {
+            message.remove();
+        }
+    }, 7000);
 }
 
 // Add animation keyframes to CSS if not already present
@@ -270,3 +351,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+

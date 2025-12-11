@@ -1,0 +1,66 @@
+---
+alwaysApply: true
+---
+# Project Info
+
+
+## Key Features
+### User Experience
+- Responsive mobile-first design
+- Smooth scrolling navigation
+- Interactive hamburger menu for mobile
+- Form validation and feedback
+- Loading animations and hover effects
+- Back-to-top functionality
+
+### Content Sections
+- **Homepage**: Hero section, service highlights, call-to-action
+- **About**: Trainer background, certifications, training philosophy
+- **Programs**: Detailed training packages, pricing, program descriptions
+- **Contact**: Contact form, business information, hours of operation
+
+### Interactive Elements
+- Mobile navigation toggle
+- Contact form with client-side validation
+- Smooth scroll to anchor links
+- Responsive image galleries
+- Hover animations on buttons and cards
+
+## Development Information
+### Browser Compatibility
+- Modern browsers (Chrome, Firefox, Safari, Edge)
+- Mobile browsers (iOS Safari, Chrome Mobile)
+- Responsive breakpoints for tablets and mobile devices
+
+### Performance Considerations
+- Optimized images and assets
+- Minimal external dependencies
+- Efficient CSS with custom properties
+- Lightweight JavaScript functionality
+
+### Customization Points
+- Color scheme easily adjustable via CSS custom properties
+- Content sections clearly separated for easy editing
+- Image paths clearly defined for asset updates
+- Contact information centralized for easy updates
+
+## Deployment Options
+1. **Static File Hosting**: Direct file upload to web server
+2. **GitHub Pages**: Free hosting via GitHub repository
+3. **Netlify**: Drag-and-drop deployment with form handling
+4. **Python Server**: `python3 -m http.server` for local development
+5. **File Opening**: Direct browser opening for testing
+
+## Content Management
+- All text content editable in HTML files
+- Images stored in organized folders by category
+- Business information centralized across pages
+- SEO-friendly structure with proper meta tags
+
+## Future Enhancement Opportunities
+- Backend integration for contact forms
+- Client portal for program tracking
+- Online booking system
+- Payment processing integration
+- Blog/content management system
+- Social media integration

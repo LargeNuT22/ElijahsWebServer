@@ -1,0 +1,172 @@
+---
+alwaysApply: true
+---
+
+# Design Guidelines - Divinity Health & Fitness Website
+
+## Color Palette
+
+### Primary Colors
+- **Primary Blue**: `#1E90FF` - Main brand color for buttons, links, and key accents
+- **Dark Blue**: `#1873CC` - Hover states and darker variations
+- **Light Blue**: `#4AA6FF` - Secondary accents and highlights
+- **Accent Blue**: `#00BFFF` - Special emphasis and call-to-action elements
+
+### Neutral Colors
+- **Black**: `#000000` - Primary background color
+- **Dark Gray**: `#1a1a1a` - Secondary backgrounds and cards
+- **Medium Gray**: `#333333` - Borders and subtle elements
+- **Light Gray**: `#666666` - Muted text and secondary content
+- **White**: `#ffffff` - Primary text color and clean backgrounds
+- **Off-White**: `#f8f8f8` - Subtle backgrounds and form fields
+
+### Shadow Colors
+- **Standard Shadow**: `rgba(0, 0, 0, 0.3)` - General drop shadows
+- **Blue Shadow**: `rgba(30, 144, 255, 0.3)` - Accent shadows and glows
+
+## Typography
+
+### Font Family
+- **Primary**: Arial, sans-serif (system font for reliability and performance)
+- **Fallback**: System sans-serif stack
+
+### Heading Hierarchy
+- **H1**: 3rem (48px) - Page titles and hero headings
+- **H2**: 2.5rem (40px) - Section titles
+- **H3**: 1.8rem (28.8px) - Subsection headings
+- **H4-H6**: Proportionally smaller - Use sparingly
+
+### Text Styling
+- **Line Height**: 1.6 for body text (optimal readability)
+- **Font Weight**: Bold for headings, normal for body text
+- **Color**: White text on dark backgrounds for high contrast
+
+## Layout & Spacing
+
+### Grid System
+- **Container**: Centered content with max-width constraints
+- **Responsive**: Mobile-first approach with breakpoints
+- **Flexbox**: Primary layout method for component alignment
+
+### Spacing Scale
+- **Small**: 0.5rem (8px) - Tight spacing
+- **Medium**: 1rem (16px) - Standard spacing
+- **Large**: 2rem (32px) - Section spacing
+- **XL**: 4rem (64px) - Major section separations
+
+### Breakpoints
+- **Mobile**: Up to 768px
+- **Tablet**: 768px - 1024px
+- **Desktop**: 1024px and above
+
+## Component Patterns
+
+### Buttons
+- **Primary Button**: Blue background with white text
+- **Secondary Button**: Outline style with blue border
+- **Hover States**: Darker blue background, smooth transition
+- **Border Radius**: Consistent rounded corners
+- **Padding**: Adequate touch targets (minimum 44px height)
+
+### Cards
+- **Background**: Dark gray (#1a1a1a) on black
+- **Border**: Subtle borders or shadows for definition
+- **Padding**: Consistent internal spacing
+- **Hover Effects**: Subtle lift or glow effects
+
+### Forms
+- **Input Fields**: Dark backgrounds with light borders
+- **Labels**: Clear, accessible labeling
+- **Validation**: Real-time feedback with color coding
+- **Submit Buttons**: Primary button styling
+
+### Navigation
+- **Desktop**: Horizontal navigation bar
+- **Mobile**: Hamburger menu with slide-out navigation
+- **Active States**: Clear indication of current page
+- **Hover Effects**: Smooth transitions and color changes
+
+## Visual Elements
+
+### Images
+- **Profile Photos**: Circular cropping for consistency
+- **Hero Images**: High-quality, professional fitness imagery
+- **Aspect Ratios**: Maintain consistent proportions
+- **Optimization**: Compressed for web performance
+
+### Icons
+- **Style**: Simple, clean icons (prefer Unicode symbols or SVG)
+- **Size**: Consistent sizing across similar elements
+- **Color**: Match the blue color scheme
+
+### Shadows & Effects
+- **Box Shadows**: Subtle depth, avoid excessive drop shadows
+- **Transitions**: 0.3s ease for smooth interactions
+- **Hover Effects**: Gentle scaling or color transitions
+- **Loading States**: Simple animations for form submissions
+
+## Accessibility Guidelines
+
+### Color Contrast
+- **Minimum Ratio**: 4.5:1 for normal text
+- **Large Text**: 3:1 for headings and large text
+- **Focus States**: Clear visual indicators for keyboard navigation
+
+### Interactive Elements
+- **Touch Targets**: Minimum 44px for mobile interactions
+- **Focus Indicators**: Visible focus rings for keyboard users
+- **Labels**: Proper form labeling for screen readers
+
+### Responsive Design
+- **Mobile-First**: Design for smallest screens first
+- **Touch-Friendly**: Appropriate spacing for finger navigation
+- **Readable Text**: Maintain legibility across all screen sizes
+
+## Content Guidelines
+
+### Voice & Tone
+- **Professional**: Authoritative but approachable
+- **Motivational**: Encouraging and positive language
+- **Clear**: Direct communication without jargon
+
+### Image Standards
+- **Quality**: High-resolution, professional photography
+- **Style**: Consistent lighting and composition
+- **Content**: Relevant to fitness and training themes
+- **Alt Text**: Descriptive alternative text for accessibility
+
+### Content Structure
+- **Scannable**: Use headings, bullets, and short paragraphs
+- **Hierarchy**: Clear information architecture
+- **Call-to-Actions**: Prominent and actionable buttons/links
+
+## Animation & Interactions
+
+### Micro-Interactions
+- **Duration**: 300ms for most transitions
+- **Easing**: CSS ease function for natural movement
+- **Purpose**: Enhance usability, not distract
+
+### Loading States
+- **Form Submissions**: Clear feedback during processing
+- **Page Transitions**: Smooth navigation between pages
+- **Image Loading**: Progressive loading for better UX
+
+## Brand Guidelines
+
+### Logo Usage
+- **Primary Logo**: "Divinity Health & Fitness" with accompanying icon
+- **Spacing**: Adequate clear space around logo
+- **Sizing**: Maintain legibility at all sizes
+- **Colors**: Use on appropriate contrast backgrounds
+
+### Brand Voice
+- **Empowering**: Focus on client transformation and success
+- **Professional**: Maintain credibility and expertise
+- **Personal**: Highlight the personal trainer relationship
+
+### Photography Style
+- **Authentic**: Real clients and genuine training scenarios
+- **Dynamic**: Action shots and transformation imagery
+- **Professional**: High-quality, well-lit photography
+- **Consistent**: Maintain visual cohesion across all images
