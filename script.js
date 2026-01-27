@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             // Add additional parameters that might be useful
-            templateParams.to_email = 'jacobrook10@gmail.com'; // Your email
+            templateParams.to_email = 'divinitygym@hotmail.com'; // Business email
             templateParams.reply_to = templateParams.email;
             templateParams.timestamp = new Date().toLocaleString();
             
