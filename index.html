@@ -52,7 +52,42 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="team-photos/group-photo.jpeg" alt="Divinity Health and Fitness Team" class="group-photo">
+                    <div class="gym-slideshow">
+                        <div class="slideshow-container">
+                            <div class="slide active">
+                                <img src="gym-photos/Primary/IMG_7644.jpg" alt="Divinity Health & Fitness Gym Interior">
+                            </div>
+                            <div class="slide">
+                                <img src="gym-photos/Primary/IMG_7646.jpg" alt="Gym Equipment - Weight Training Area">
+                            </div>
+                            <div class="slide">
+                                <img src="gym-photos/Primary/IMG_7648.jpg" alt="Cardio and Training Equipment">
+                            </div>
+                            <div class="slide">
+                                <img src="gym-photos/Primary/IMG_7650.jpg" alt="Functional Training Space">
+                            </div>
+                            <div class="slide">
+                                <img src="gym-photos/Primary/IMG_0375.jpg" alt="24-Hour Gym Facilities">
+                            </div>
+                            <div class="slide">
+                                <img src="gym-photos/Primary/IMG_9001.jpg" alt="Professional Gym Environment">
+                            </div>
+                            
+                            <!-- Navigation arrows -->
+                            <button class="slide-prev" onclick="changeSlide(-1)">‹</button>
+                            <button class="slide-next" onclick="changeSlide(1)">›</button>
+                            
+                            <!-- Slide indicators -->
+                            <div class="slide-indicators">
+                                <button class="indicator active" onclick="currentSlide(1)"></button>
+                                <button class="indicator" onclick="currentSlide(2)"></button>
+                                <button class="indicator" onclick="currentSlide(3)"></button>
+                                <button class="indicator" onclick="currentSlide(4)"></button>
+                                <button class="indicator" onclick="currentSlide(5)"></button>
+                                <button class="indicator" onclick="currentSlide(6)"></button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -108,9 +143,18 @@
                 
                 <!-- Gym Gallery Section -->
                 <div class="gym-gallery">
-                    <div class="gym-image-placeholder">🏋️ Gym Equipment Photo 1</div>
-                    <div class="gym-image-placeholder">💪 Training Area Photo 2</div>
-                    <div class="gym-image-placeholder">🎯 Workout Space Photo 3</div>
+                    <div class="gym-image">
+                        <img src="gym-photos/Primary/IMG_0028.JPG" alt="Professional Gym Equipment">
+                        <div class="image-caption">Professional Weight Training Equipment</div>
+                    </div>
+                    <div class="gym-image">
+                        <img src="gym-photos/Primary/IMG_0128.jpg" alt="Cardio & Training Area">
+                        <div class="image-caption">Cardio & Functional Training Area</div>
+                    </div>
+                    <div class="gym-image">
+                        <img src="gym-photos/Primary/Attachment.JPG" alt="24-Hour Gym Facilities">
+                        <div class="image-caption">24-Hour Access Gym Space</div>
+                    </div>
                 </div>
                 
                 <div class="features-grid">

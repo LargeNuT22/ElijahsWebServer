@@ -352,3 +352,99 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Slideshow Functionality
+let currentSlideIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const indicators = document.querySelectorAll('.indicator');
+
+// Auto-advance slideshow
+function autoSlide() {
+    changeSlide(1);
+}
+
+// Change slide function
+function changeSlide(direction) {
+    if (slides.length === 0) return;
+    
+    // Remove active class from current slide and indicator
+    slides[currentSlideIndex].classList.remove('active');
+    if (indicators[currentSlideIndex]) {
+        indicators[currentSlideIndex].classList.remove('active');
+    }
+    
+    // Calculate new slide index
+    currentSlideIndex += direction;
+    
+    // Handle wrap-around
+    if (currentSlideIndex >= slides.length) {
+        currentSlideIndex = 0;
+    } else if (currentSlideIndex < 0) {
+        currentSlideIndex = slides.length - 1;
+    }
+    
+    // Add active class to new slide and indicator
+    slides[currentSlideIndex].classList.add('active');
+    if (indicators[currentSlideIndex]) {
+        indicators[currentSlideIndex].classList.add('active');
+    }
+}
+
+// Go to specific slide
+function currentSlide(slideNumber) {
+    if (slides.length === 0) return;
+    
+    // Remove active class from current slide and indicator
+    slides[currentSlideIndex].classList.remove('active');
+    if (indicators[currentSlideIndex]) {
+        indicators[currentSlideIndex].classList.remove('active');
+    }
+    
+    // Set new slide index
+    currentSlideIndex = slideNumber - 1;
+    
+    // Add active class to new slide and indicator
+    slides[currentSlideIndex].classList.add('active');
+    if (indicators[currentSlideIndex]) {
+        indicators[currentSlideIndex].classList.add('active');
+    }
+}
+
+// Initialize slideshow when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Start auto-slideshow (change every 5 seconds)
+    if (slides.length > 0) {
+        setInterval(autoSlide, 5000);
+    }
+    
+    // Add touch/swipe support for mobile
+    let startX = 0;
+    let endX = 0;
+    
+    const slideshowContainer = document.querySelector('.slideshow-container');
+    if (slideshowContainer) {
+        slideshowContainer.addEventListener('touchstart', function(e) {
+            startX = e.changedTouches[0].screenX;
+        });
+        
+        slideshowContainer.addEventListener('touchend', function(e) {
+            endX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+    }
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const difference = startX - endX;
+        
+        if (Math.abs(difference) > swipeThreshold) {
+            if (difference > 0) {
+                // Swiped left - next slide
+                changeSlide(1);
+            } else {
+                // Swiped right - previous slide
+                changeSlide(-1);
+            }
+        }
+    }
+});
+
