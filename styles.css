@@ -55,6 +55,13 @@ p {
     font-size: 1.1rem;
 }
 
+/* Global Image Constraints - Prevents images from being too large */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* Container */
 .container {
     max-width: 1200px;
