@@ -89,10 +89,16 @@ alwaysApply: true
 ## Visual Elements
 
 ### Images
-- **Profile Photos**: Circular cropping for consistency
+- **Profile Photos**: Circular cropping for consistency (150px x 150px for team members)
 - **Hero Images**: High-quality, professional fitness imagery
 - **Aspect Ratios**: Maintain consistent proportions
 - **Optimization**: Compressed for web performance
+- **Global Constraints**: All images MUST have `max-width: 100%` and `height: auto` to prevent massive images on hosted sites
+- **Image Scaling**: Always use CSS constraints - images display at natural size without constraints, causing issues when hosted
+- **Image Locations**: 
+  - Team photos: `gym-photos/TeamPhotos/`
+  - Primary gym photos: `gym-photos/Primary/`
+  - Logo: `Logo/Picture 1.png`
 
 ### Icons
 - **Style**: Simple, clean icons (prefer Unicode symbols or SVG)

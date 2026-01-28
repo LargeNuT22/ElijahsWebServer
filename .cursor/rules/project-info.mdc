@@ -3,64 +3,160 @@ alwaysApply: true
 ---
 # Project Info
 
+## Project Overview
+**Divinity Health & Fitness** - Woombye's ONLY 24-Hour Gym website. A static HTML/CSS/JavaScript website for a fitness training business in Queensland, Australia.
 
 ## Key Features
 ### User Experience
 - Responsive mobile-first design
 - Smooth scrolling navigation
 - Interactive hamburger menu for mobile
-- Form validation and feedback
+- Form validation and feedback with EmailJS integration
 - Loading animations and hover effects
 - Back-to-top functionality
+- Image slideshow for gym photos
 
 ### Content Sections
-- **Homepage**: Hero section, service highlights, call-to-action
-- **About**: Trainer background, certifications, training philosophy
-- **Programs**: Detailed training packages, pricing, program descriptions
-- **Contact**: Contact form, business information, hours of operation
+- **Homepage (index.html)**: Hero section with slideshow, team members, service highlights, call-to-action
+- **About (about.html)**: Trainer background, certifications, training philosophy, credentials
+- **Programs (programs.html)**: Detailed training packages, pricing, program descriptions, packages
+- **Contact (contact.html)**: Contact form with EmailJS integration, business information, hours of operation
 
 ### Interactive Elements
-- Mobile navigation toggle
-- Contact form with client-side validation
+- Mobile navigation toggle (hamburger menu)
+- Contact form with EmailJS integration for email sending
 - Smooth scroll to anchor links
-- Responsive image galleries
+- Responsive image galleries with slideshow
 - Hover animations on buttons and cards
+- Image slideshow with navigation controls
+
+## Technology Stack
+- **HTML5**: Semantic markup
+- **CSS3**: Custom properties, Flexbox, Grid, responsive design
+- **JavaScript (Vanilla)**: No frameworks, pure JavaScript
+- **EmailJS**: Contact form email service integration
+- **Nginx**: Web server for production (EC2 deployment)
+
+## File Structure
+```
+ElijahsWebsite/
+├── index.html          # Homepage
+├── about.html          # About page
+├── programs.html       # Programs page
+├── contact.html        # Contact page
+├── styles.css          # Main stylesheet with CSS custom properties
+├── script.js           # JavaScript functionality including EmailJS
+├── Logo/               # Logo images
+├── gym-photos/
+│   ├── Primary/        # Main gym facility photos
+│   └── TeamPhotos/     # Team member profile pictures
+│       ├── ElijahProfilePic.PNG
+│       ├── IanProfilePic.png
+│       └── TeresaProfilePic.png
+└── .cursor/rules/      # Cursor AI rules
+```
 
 ## Development Information
 ### Browser Compatibility
 - Modern browsers (Chrome, Firefox, Safari, Edge)
 - Mobile browsers (iOS Safari, Chrome Mobile)
-- Responsive breakpoints for tablets and mobile devices
+- Responsive breakpoints: Mobile (≤768px), Tablet (768-1024px), Desktop (≥1024px)
 
 ### Performance Considerations
 - Optimized images and assets
-- Minimal external dependencies
-- Efficient CSS with custom properties
+- Minimal external dependencies (only EmailJS CDN)
+- Efficient CSS with custom properties (CSS variables)
 - Lightweight JavaScript functionality
+- Global image constraints to prevent massive images on hosted sites
 
 ### Customization Points
-- Color scheme easily adjustable via CSS custom properties
+- Color scheme easily adjustable via CSS custom properties in `:root`
 - Content sections clearly separated for easy editing
 - Image paths clearly defined for asset updates
-- Contact information centralized for easy updates
+- Contact information centralized in HTML files
+- EmailJS credentials in `script.js` (EMAILJS_CONFIG object)
 
-## Deployment Options
-1. **Static File Hosting**: Direct file upload to web server
-2. **GitHub Pages**: Free hosting via GitHub repository
-3. **Netlify**: Drag-and-drop deployment with form handling
-4. **Python Server**: `python3 -m http.server` for local development
-5. **File Opening**: Direct browser opening for testing
+## Image Handling
+### Critical CSS Rule
+All images MUST have global constraints to prevent massive display on hosted sites:
+```css
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+```
+**Why**: Images display at natural size (often 3000-5000px) without constraints when hosted, even if they look fine locally.
 
-## Content Management
-- All text content editable in HTML files
-- Images stored in organized folders by category
-- Business information centralized across pages
-- SEO-friendly structure with proper meta tags
+### Image Locations
+- **Team Photos**: `gym-photos/TeamPhotos/` - Used in team section on homepage
+- **Primary Gym Photos**: `gym-photos/Primary/` - Used in slideshows and galleries
+- **Logo**: `Logo/Picture 1.png` - Used in navigation
+
+## EmailJS Integration
+- **Service**: EmailJS for contact form submissions
+- **Configuration**: Located in `script.js` (EMAILJS_CONFIG object)
+- **Required Credentials**: SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY
+- **CDN**: Loaded from `https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js`
+- **Note**: Domain must be allowed in EmailJS dashboard for production
+
+## Deployment Information
+### Current Deployment
+- **Hosting**: AWS EC2 instance with Nginx
+- **Repository**: GitHub - `git@github.com:LargeNuT22/ElijahsWebServer.git`
+- **Branch**: `node-version` (active branch)
+- **Server Path**: `/var/www/ElijahsWebServer/`
+- **Web Server**: Nginx configured to serve from `/var/www/ElijahsWebServer/`
+
+### Deployment Process
+1. **Local Development**: Make changes locally
+2. **Commit & Push**: 
+   ```bash
+   git add .
+   git commit -m "Description"
+   git push origin node-version
+   ```
+3. **Server Update**:
+   ```bash
+   ssh -i "key.pem" ubuntu@ec2-ip
+   cd /var/www/ElijahsWebServer
+   sudo git pull origin node-version
+   sudo chown -R www-data:www-data /var/www/ElijahsWebServer/
+   sudo chmod -R 755 /var/www/ElijahsWebServer/
+   sudo systemctl restart nginx
+   ```
+
+### Deployment Files
+- `ec2-deployment-guide.md` - Complete EC2 setup instructions
+- `ec2-update-commands.md` - Quick update commands
+- `DEPLOYMENT_INSTRUCTIONS.md` - Deployment checklist and troubleshooting
+- `MANUAL_PUSH_GUIDE.md` - Manual push instructions if network issues
+
+## Git Repository
+- **Remote**: `git@github.com:LargeNuT22/ElijahsWebServer.git`
+- **Active Branch**: `node-version`
+- **Main Branch**: `main` (not actively used)
+- **Note**: If SSH fails, use HTTPS: `https://github.com/LargeNuT22/ElijahsWebServer.git`
+
+## Recent Updates & Fixes
+- ✅ Added global image constraints to prevent massive images on hosted site
+- ✅ EmailJS integration for contact form
+- ✅ Team photos added (Elijah, Ian, Teresa)
+- ✅ Professional gym photo slideshow
+- ✅ Responsive design improvements
+- ✅ Mobile navigation enhancements
+
+## Important Notes
+- **Image Scaling**: Always ensure images have CSS constraints - they will display at full size without them
+- **Git Worktree**: Main repository is at `/var/www` on EC2, but Nginx serves from `/var/www/ElijahsWebServer/`
+- **Network Issues**: If git push fails due to network, use HTTPS or manual push methods
+- **Permissions**: Always set proper permissions after pulling on EC2: `chown -R www-data:www-data` and `chmod -R 755`
 
 ## Future Enhancement Opportunities
-- Backend integration for contact forms
+- Backend integration for contact forms (currently using EmailJS)
 - Client portal for program tracking
 - Online booking system
 - Payment processing integration
 - Blog/content management system
 - Social media integration
+- Image optimization/compression pipeline
