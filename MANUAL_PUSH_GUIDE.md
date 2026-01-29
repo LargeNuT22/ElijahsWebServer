@@ -95,8 +95,7 @@ ElijahsWebServer/
 ├── gym-photos/
 │   ├── TeamPhotos/
 │   │   ├── ElijahProfilePic.PNG
-│   │   ├── IanProfilePic.png
-│   │   └── TeresaProfilePic.png
+│   │   └── IanProfilePic.png
 │   ├── Primary/
 │   │   └── IMG_0376.jpg
 │   └── [other gym photos]

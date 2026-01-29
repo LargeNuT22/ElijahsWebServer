@@ -52,7 +52,6 @@ ElijahsWebsite/
 │   └── TeamPhotos/     # Team member profile pictures
 │       ├── ElijahProfilePic.PNG
 │       ├── IanProfilePic.png
-│       └── TeresaProfilePic.png
 └── .cursor/rules/      # Cursor AI rules
 ```
 
@@ -141,7 +140,7 @@ img {
 ## Recent Updates & Fixes
 - ✅ Added global image constraints to prevent massive images on hosted site
 - ✅ EmailJS integration for contact form
-- ✅ Team photos added (Elijah, Ian, Teresa)
+- ✅ Team photos added (Elijah, Ian)
 - ✅ Professional gym photo slideshow
 - ✅ Responsive design improvements
 - ✅ Mobile navigation enhancements
