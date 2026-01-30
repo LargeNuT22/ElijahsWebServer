@@ -1023,7 +1023,37 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    /* Mobile Navigation */
+    /* Mobile Navigation - prevent banner overlap */
+    .nav-container {
+        padding: 0 1rem;
+        gap: 0.5rem;
+        min-height: 70px;
+    }
+
+    .logo {
+        flex: 1 1 auto;
+        min-width: 0;
+        gap: 0.5rem;
+    }
+
+    .logo-img {
+        height: 40px;
+        flex-shrink: 0;
+    }
+
+    .logo-text {
+        font-size: 0.85rem;
+        line-height: 1.2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .hamburger {
+        flex-shrink: 0;
+        margin-left: 0.25rem;
+    }
+
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -1155,13 +1185,17 @@ footer {
     .container {
         padding: 0 1rem;
     }
-
-    .nav-container {
-        padding: 0 1rem;
-    }
 }
 
 @media (max-width: 480px) {
+    .logo-text {
+        font-size: 0.75rem;
+    }
+
+    .logo-img {
+        height: 36px;
+    }
+
     .hero-title {
         font-size: 2rem;
     }
