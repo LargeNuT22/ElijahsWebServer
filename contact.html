@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contact Divinity Health & Fitness in Woombye, QLD. Enquire about 24hr memberships, personal training & classes. We're here to help you get started today.">
+    <meta name="description" content="Contact Divinity Health & Fitness — 24 hour gym at 6-10 Blackall St, Woombye, near Nambour. Enquire about gym memberships, personal training & massage.">
     <link rel="canonical" href="https://divinity.fitness/contact.html">
     <link rel="sitemap" type="application/xml" href="https://divinity.fitness/sitemap.xml">
     <link rel="icon" type="image/png" href="/Logo/Picture 1.png">
     <link rel="apple-touch-icon" href="/Logo/Picture 1.png">
-    <title>Contact Us | Divinity Health and Fitness | Woombye 24-Hour Gym</title>
+    <title>Contact Us | 24 Hour Gym Woombye | Divinity Health & Fitness</title>
+    <meta name="theme-color" content="#04060a">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -55,11 +59,17 @@
                 <!-- Gym Atmosphere Images -->
                 <div class="gym-gallery">
                     <div class="gym-image">
-                        <img src="gym-photos/Primary/IMG_9001.jpg" alt="Gym Location & Facility">
+                        <picture>
+                            <source type="image/webp" srcset="gym-photos/web/img_9001-800.webp 800w, gym-photos/web/img_9001.webp 1200w" sizes="(max-width: 960px) 92vw, 560px">
+                            <img src="gym-photos/web/img_9001.jpg" srcset="gym-photos/web/img_9001-800.jpg 800w, gym-photos/web/img_9001.jpg 1200w" sizes="(max-width: 960px) 92vw, 560px" alt="Gym Location & Facility" width="1200" height="1600" loading="lazy" decoding="async">
+                        </picture>
                         <div class="image-caption">Our Woombye Location & Facility</div>
                     </div>
                     <div class="gym-image">
-                        <img src="gym-photos/Primary/IMG_0028.JPG" alt="Personal Training Environment">
+                        <picture>
+                            <source srcset="gym-photos/web/img_0028.webp" type="image/webp">
+                            <img src="gym-photos/web/img_0028.jpg" alt="Personal Training Environment" width="520" height="416" loading="lazy" decoding="async">
+                        </picture>
                         <div class="image-caption">Personal Training Environment</div>
                     </div>
                 </div>
@@ -67,6 +77,10 @@
                     <div class="contact-form-section">
                         <h2>Send a Message</h2>
                         <form class="contact-form" id="contactForm">
+                            <div class="hp-field" aria-hidden="true">
+                                <label for="company">Company (leave this blank)</label>
+                                <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+                            </div>
                             <div class="form-group">
                                 <label for="name">Full Name *</label>
                                 <input type="text" id="name" name="name" required>
@@ -99,6 +113,11 @@
                                 <textarea id="availability" name="availability" rows="2" placeholder="Let me know your preferred days and times for training sessions..."></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Send Message</button>
+                            <p class="form-privacy-note">
+                                We collect the details in this form so we can respond to your enquiry. Fitness goals may
+                                include health information &mdash; only share what you're comfortable with. See our
+                                <a href="privacy.html">Privacy Policy</a> for how we handle your information.
+                            </p>
                         </form>
                     </div>
 
@@ -127,6 +146,7 @@
                                     <h3>Location</h3>
                                     <p>6-10 Blackall Street</p>
                                     <p>Woombye, QLD, Australia</p>
+                                    <p>Less than 10 minutes' drive from Nambour</p>
                                     <p class="contact-note">Woombye's ONLY 24-Hour Gym</p>
                                 </div>
                             </div>
@@ -164,6 +184,10 @@
                         <p>Simply fill out the contact form above or call us on 0455 558 278. We'll discuss membership options and arrange a tour of our facilities.</p>
                     </div>
                     <div class="faq-item">
+                        <h3>Where is the gym located?</h3>
+                        <p>We're at 6-10 Blackall Street in the heart of Woombye, with easy parking. We're less than 10 minutes' drive from Nambour and Palmwoods, making us a convenient 24 hour gym for the whole Sunshine Coast hinterland.</p>
+                    </div>
+                    <div class="faq-item">
                         <h3>What makes you different from other gyms?</h3>
                         <p>We're Woombye's ONLY 24-hour gym! Plus we offer comprehensive services including personal training, massage therapy, and self-defence classes.</p>
                     </div>
@@ -181,7 +205,7 @@
                     </div>
                     <div class="faq-item">
                         <h3>How does 24-hour access work?</h3>
-                        <p>24-hour members receive secure key card access to the gym at any time. Staff are available during business hours for assistance and appointments.</p>
+                        <p>24-hour members receive secure keypad access to the gym at any time. Staff are available during business hours for assistance and appointments.</p>
                     </div>
                 </div>
             </div>
@@ -215,13 +239,18 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Divinity Health and Fitness - Elijah Rook. All rights reserved.</p>
+                <p>&copy; <span data-year>2026</span> Divinity Health and Fitness - Elijah Rook. All rights reserved.</p>
+                <p class="footer-legal">
+                    Divinity Fitness Pty Ltd &bull; ABN 99 657 001 799<br>
+                    <a href="privacy.html">Privacy Policy</a> &bull; <a href="terms.html">Terms of Use</a>
+                </p>
             </div>
         </div>
     </footer>
 
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="banner-config.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
