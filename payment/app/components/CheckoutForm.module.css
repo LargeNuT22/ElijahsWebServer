@@ -1,0 +1,88 @@
+.container {
+	width: 100%;
+}
+
+.summary {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem;
+	background: var(--color-surface);
+	border-radius: 8px;
+	margin-bottom: 1.5rem;
+}
+
+.summaryLabel {
+	font-size: 1rem;
+	font-weight: 600;
+	color: var(--color-text);
+}
+
+.summaryAmount {
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: var(--color-primary);
+}
+
+.expressCheckout {
+	margin-bottom: 1rem;
+}
+
+.loading {
+	text-align: center;
+	padding: 2rem 1rem;
+}
+
+.spinner {
+	width: 40px;
+	height: 40px;
+	border: 3px solid var(--color-border);
+	border-top-color: var(--color-primary);
+	border-radius: 50%;
+	animation: spin 0.8s linear infinite;
+	margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.loadingText {
+	color: var(--color-text-light);
+	font-size: 0.875rem;
+}
+
+.error {
+	background: #fef2f2;
+	border: 1px solid #fecaca;
+	border-radius: 8px;
+	padding: 1rem;
+	margin-bottom: 1rem;
+}
+
+.errorText {
+	color: var(--color-error);
+	font-size: 0.875rem;
+	text-align: center;
+}
+
+.info {
+	text-align: center;
+	margin-top: 1rem;
+}
+
+.infoText {
+	font-size: 0.75rem;
+	color: var(--color-text-light);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+}
+
+.infoText::before {
+	content: '🔒';
+	font-size: 0.875rem;
+}

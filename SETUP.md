@@ -247,6 +247,12 @@ server {
         deny all;
     }
 
+    # The payment app's source lives in the repo but is a separate service on
+    # payment.divinity.fitness — never serve its files from the main site
+    location ^~ /payment {
+        return 404;
+    }
+
     # Long cache for images (filenames are stable derivatives)
     location ~* \.(webp|jpg|jpeg|png|gif|ico|svg)$ {
         expires 30d;
@@ -472,3 +478,21 @@ Lifecycle Manager.)
 | SES | ~$0 at contact-form volume |
 | Route 53 hosted zone (if used) | US$0.50 |
 | **Total** | **~US$12/month** |
+
+---
+
+## 13. Payment app (payment.divinity.fitness)
+
+The `payment/` folder in this repo is a **separate Stripe checkout app** for the
+gym's self-service mini fridge, reached only by scanning the QR/NFC tags on the
+drinks — it is intentionally not linked from the main site.
+
+It runs as its own systemd service (`divinity-payment`, port 12600) behind its
+own nginx vhost on this same instance. Full setup, build and Stripe
+instructions: **[payment/DEPLOY.md](payment/DEPLOY.md)**.
+
+Two rules it shares with the rest of this guide:
+
+- Its Stripe keys live in `/etc/divinity/payment.env` (600, outside the web
+  root) — never in the repo.
+- Port 12600 stays closed in the security group, like port 3000.

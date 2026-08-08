@@ -1,0 +1,162 @@
+.container {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1.5rem;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.content {
+	max-width: 600px;
+	width: 100%;
+}
+
+.header {
+	text-align: center;
+	margin-bottom: 2rem;
+	color: white;
+}
+
+.title {
+	font-size: 3rem;
+	font-weight: 700;
+	margin-bottom: 0.5rem;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+	font-size: 1.25rem;
+	opacity: 0.95;
+	font-weight: 500;
+}
+
+.card {
+	background: white;
+	border-radius: var(--border-radius);
+	padding: 2rem;
+	box-shadow: var(--shadow-lg);
+	margin-bottom: 1.5rem;
+}
+
+.cardTitle {
+	font-size: 1.5rem;
+	margin-bottom: 1rem;
+	color: var(--color-text);
+}
+
+.cardText {
+	font-size: 1rem;
+	line-height: 1.6;
+	color: var(--color-text-light);
+	margin-bottom: 1rem;
+}
+
+.cardText:last-child {
+	margin-bottom: 0;
+}
+
+.products {
+	background: white;
+	border-radius: var(--border-radius);
+	padding: 2rem;
+	box-shadow: var(--shadow-lg);
+	margin-bottom: 1.5rem;
+}
+
+.productsTitle {
+	font-size: 1.25rem;
+	margin-bottom: 1.5rem;
+	color: var(--color-text);
+}
+
+.productsList {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: 1.5rem;
+}
+
+.productCard {
+	display: flex;
+	flex-direction: column;
+	background: #f9fafb;
+	border: 1px solid #e5e7eb;
+	border-radius: var(--border-radius);
+	overflow: hidden;
+	transition: all 0.2s ease;
+	text-decoration: none;
+	color: inherit;
+}
+
+.productCard:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	border-color: var(--color-primary);
+}
+
+.productImage {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	background: #f3f4f6;
+}
+
+.productInfo {
+	padding: 1.25rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	flex-grow: 1;
+}
+
+.productName {
+	font-size: 1.125rem;
+	font-weight: 600;
+	color: var(--color-text);
+	margin: 0;
+}
+
+.productDescription {
+	font-size: 0.875rem;
+	color: var(--color-text-light);
+	line-height: 1.5;
+	margin: 0;
+	flex-grow: 1;
+}
+
+.productPrice {
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: var(--color-primary);
+	margin: 0.5rem 0 0;
+}
+
+.footer {
+	text-align: center;
+}
+
+.footerText {
+	color: white;
+	font-size: 0.875rem;
+	opacity: 0.9;
+}
+
+@media (max-width: 640px) {
+	.title {
+		font-size: 2rem;
+	}
+
+	.subtitle {
+		font-size: 1rem;
+	}
+
+	.card,
+	.products {
+		padding: 1.5rem;
+	}
+
+	.productsList {
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+}

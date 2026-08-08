@@ -1,0 +1,14 @@
+---
+alwaysApply: true
+---
+# Project Info
+
+This is a React Router v7 project that hosts a single webpage for serving a one click payment Stripe checkout. 
+
+Divinity Fitness is a gym which provides a self-service mini fridge. There are 3 tiers of drinks, "Regular", "Enhanced" and "Premium", with different pricing for each. A Stripe account manages the naming and pricing for these tiers. 
+
+When a customer wants to purchase a drink, they put their phone near the appropriate NFC tag (an RFID/NFC Tag 25mm Coin (NTAG213 Chip, 13.56MHz)). The chip will give their phone a URL to _this_ website. The URL will take the form of `https://payments.divinity.fitness/<stripe_product_id>`.
+
+The Stripe element to be used is the [**Express Checkout Element**](https://docs.stripe.com/elements/express-checkout-element).	Keep it simple, it doesn't have to be fancy, just functional and clean. As per this guide: https://docs.stripe.com/elements/express-checkout-element/accept-a-payment
+
+Always use `pnpm` instead of `npm`. The program should be written in TypeScript and keep within the eslint rules provided by the `eslint-config-love` package.
