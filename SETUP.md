@@ -247,6 +247,11 @@ server {
         deny all;
     }
 
+    # Server-side source and docs are not site content
+    location ~* ^/(server\.js|package(-lock)?\.json|[^/]*\.md)$ {
+        return 404;
+    }
+
     # The payment app's source lives in the repo but is a separate service on
     # payments.divinity.fitness — never serve its files from the main site
     location ^~ /payment {
