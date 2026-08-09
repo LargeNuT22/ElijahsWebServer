@@ -1,7 +1,7 @@
-# Payment app — payment.divinity.fitness
+# Payment app — payments.divinity.fitness
 
 Stripe checkout for the gym's self-service mini fridge. Customers scan a QR code
-or NFC tag on a drink, which opens `https://payment.divinity.fitness/<PRODUCT_ID>`
+or NFC tag on a drink, which opens `https://payments.divinity.fitness/<PRODUCT_ID>`
 and shows a one-tap payment page (Apple Pay / Google Pay / card / Afterpay).
 
 There are deliberately **no links to this app from the main website** — the QR/NFC
@@ -12,7 +12,7 @@ This guide deploys it on the **same EC2 instance** as the main site (see the roo
 
 ```
 Phone (QR/NFC scan)
-        │ https://payment.divinity.fitness/<product-id>
+        │ https://payments.divinity.fitness/<product-id>
         ▼
    nginx (443, TLS)  ── adds Permissions-Policy: payment=(*)
         │ proxy
@@ -29,7 +29,7 @@ Prices always come from Stripe server-side — a visitor cannot alter the amount
 
 ## 0. Checklist
 
-- [ ] DNS: `payment.divinity.fitness` A record → the instance's Elastic IP
+- [ ] DNS: `payments.divinity.fitness` A record → the instance's Elastic IP
 - [ ] pnpm installed (`corepack enable pnpm`)
 - [ ] `/etc/divinity/payment.env` created from the handover archive's `.env` (600)
 - [ ] App built (`pnpm install && pnpm build` with the env file sourced)
@@ -45,11 +45,16 @@ Prices always come from Stripe server-side — a visitor cannot alter the amount
 
 In the `divinity.fitness` DNS zone add:
 
-| Type | Name    | Value                     |
-|------|---------|---------------------------|
-| A    | payment | (same Elastic IP as site) |
+| Type | Name     | Value                     |
+|------|----------|---------------------------|
+| A    | payments | (same Elastic IP as site) |
 
-The QR/NFC tags already encode `https://payment.divinity.fitness/<product-id>`,
+The nginx vhost also answers for `payment.divinity.fitness` (singular) as a
+safety net in case any older tag encodes that spelling — if that record is ever
+repointed at this instance, expand the certificate with
+`sudo certbot --nginx -d payments.divinity.fitness -d payment.divinity.fitness`.
+
+The QR/NFC tags already encode `https://payments.divinity.fitness/<product-id>`,
 so keeping this exact subdomain means **every existing tag keeps working** and the
 Apple Pay / Google Pay domain registration with Stripe stays valid.
 
@@ -76,7 +81,7 @@ It must contain (see `payment/env.example` for the template):
 | `PORT` | `12600` |
 | `NODE_ENV` | `production` |
 | `USE_HTTPS` | `false` (nginx terminates TLS) |
-| `APP_URL` | `https://payment.divinity.fitness` (Stripe return URL — must match exactly) |
+| `APP_URL` | `https://payments.divinity.fitness` (Stripe return URL — must match exactly) |
 
 Never open port 12600 in the security group — it is reachable only via nginx,
 same rule as the contact-form service's port 3000.
@@ -162,7 +167,7 @@ sudo tee /etc/nginx/sites-available/divinity-payment >/dev/null <<'EOF'
 server {
     listen 80;
     listen [::]:80;
-    server_name payment.divinity.fitness;
+    server_name payments.divinity.fitness payment.divinity.fitness;
 
     add_header Permissions-Policy "payment=(*)" always;
     add_header X-Content-Type-Options nosniff always;
@@ -190,7 +195,7 @@ sudo nginx -t && sudo systemctl reload nginx
 Then HTTPS (DNS from section 1 must already resolve):
 
 ```bash
-sudo certbot --nginx -d payment.divinity.fitness
+sudo certbot --nginx -d payments.divinity.fitness
 ```
 
 Certbot rewrites the vhost for TLS and adds the HTTP→HTTPS redirect; renewal is
@@ -201,11 +206,11 @@ already automatic from the main-site setup.
 ## 6. Verification
 
 ```bash
-curl -s https://payment.divinity.fitness/api/health          # {"status":"ok"}
-curl -s https://payment.divinity.fitness/robots.txt          # Disallow: /
-curl -sI https://payment.divinity.fitness/ | grep -i permissions-policy
+curl -s https://payments.divinity.fitness/api/health          # {"status":"ok"}
+curl -s https://payments.divinity.fitness/robots.txt          # Disallow: /
+curl -sI https://payments.divinity.fitness/ | grep -i permissions-policy
                                                              # payment=(*)
-curl -s https://payment.divinity.fitness/api/products | head -c 200
+curl -s https://payments.divinity.fitness/api/products | head -c 200
                                                              # JSON list of drinks
 ```
 
@@ -242,9 +247,9 @@ sudo systemctl restart divinity-payment
 - **Products & prices** are managed entirely in the Stripe Dashboard → Products.
   A product appears on the app's home page only if its metadata has
   `public_visible = true`; ordering uses a numeric `sort` metadata field. New
-  NFC/QR tags should encode `https://payment.divinity.fitness/<PRODUCT_ID>`.
+  NFC/QR tags should encode `https://payments.divinity.fitness/<PRODUCT_ID>`.
 - **Domain registration** (Settings → Payment methods → Domains) already covers
-  `payment.divinity.fitness`; it survives the move because the domain is
+  `payments.divinity.fitness`; it survives the move because the domain is
   unchanged. If Apple Pay ever stops showing, re-verify it there.
 
 ---

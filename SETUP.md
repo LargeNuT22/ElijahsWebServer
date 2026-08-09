@@ -248,7 +248,7 @@ server {
     }
 
     # The payment app's source lives in the repo but is a separate service on
-    # payment.divinity.fitness — never serve its files from the main site
+    # payments.divinity.fitness — never serve its files from the main site
     location ^~ /payment {
         return 404;
     }
@@ -481,7 +481,7 @@ Lifecycle Manager.)
 
 ---
 
-## 13. Payment app (payment.divinity.fitness)
+## 13. Payment app (payments.divinity.fitness)
 
 The `payment/` folder in this repo is a **separate Stripe checkout app** for the
 gym's self-service mini fridge, reached only by scanning the QR/NFC tags on the
